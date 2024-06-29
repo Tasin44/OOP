@@ -1,0 +1,52 @@
+
+#to know more: https://www.geeksforgeeks.org/constructors-in-python/
+
+class Person: 
+    def __init__(self,name,age,company):
+        self.name=name
+        self.age=age
+        self.company=company
+    
+p1=Person("Tasin",25,"Enosis")#her Person is an instance,p1 is an object
+print(p1.age)
+print(p1.name)
+
+# In Python, the __init__ method is similar to a constructor in C++. 
+# The __init__ method is a special method that is automatically called ,
+# when an instance of the class is created. It allows you to initialize the attributes of the class.
+# You can define it to perform any initialization actions required for the object.
+
+'''
+we cannot have two __init__ methods with the same name in a single class in Python. 
+Python does not support method overloading based on the number or types of arguments, 
+unlike some other programming languages.
+'''
+
+'''
+An "empty class" in the context means a class that is defined 
+without any methods, including __init__. 
+However, it is entirely possible to define any class without an __init__ method, 
+not just empty ones. The presence or absence of the __init__ method 
+does not depend on whether the class is empty or not.
+'''
+
+#Example of an Empty Class Without __init__
+
+class EmptyClass:
+    pass
+
+instance = EmptyClass()
+print(instance)  # Outputs: <__main__.EmptyClass object at 0x...>
+
+
+#Example of a Class With Other Methods But Without __init__
+
+class MyClass:
+    def some_method(self):
+        print("This is a method in MyClass")
+
+instance = MyClass()
+instance.some_method()  # Outputs: This is a method in MyClass
+
+
+
