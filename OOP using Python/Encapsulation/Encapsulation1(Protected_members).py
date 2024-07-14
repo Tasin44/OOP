@@ -1,4 +1,8 @@
 '''
+Encapsulation is the concept of bundling the data (attributes) and methods (functions) 
+that operate on the data into a single unit, or class, and restricting access to some of the object's components. 
+This means that the internal representation of an object is hidden from the outside.
+
 Encapsulation describes the idea of wrapping data and the methods that work on data within one unit. 
 This puts restrictions on accessing variables and methods directly 
 and can prevent the accidental modification of data. To prevent accidental change, 
