@@ -1,4 +1,9 @@
-
+'''
+Definition:
+Abstraction is the concept of hiding the complex implementation details of a system and 
+exposing only the necessary parts to the user. It helps in reducing complexity and 
+allows the programmer to focus on interactions at a high level.
+'''
 # It means hiding complex things behind a procedure so that things look simiple 
 
 from abc import ABC, abstractmethod
