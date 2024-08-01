@@ -31,7 +31,7 @@ does not depend on whether the class is empty or not.
 '''
 
 #Example of an Empty Class Without __init__
-
+# Use the pass keyword when you do not want to add any other properties or methods to the class.
 class EmptyClass:
     pass
 
