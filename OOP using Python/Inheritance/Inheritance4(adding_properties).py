@@ -26,3 +26,11 @@ obj = Student("Mayank", 23, "16-03-2000")
 obj.display()
 obj.displayInfo()
 
+
+
+Output:
+Rahul 23
+Mayank 23 16-03-2000
+
+
+
