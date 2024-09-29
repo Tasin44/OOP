@@ -47,3 +47,6 @@ class GrandChild(Child):
 
 g = GrandChild("Abdur Rahman", 55 , "Noida")
 print(g.getName(), g.getAge(), g.getAddress())
+
+# output:
+# Abdur Rahman 55 Noida
