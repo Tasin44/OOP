@@ -26,11 +26,11 @@ class Person:
         self.identity=name
         self.__paword=password
         self.number=phone
-    def get_attribute(self):
+    def ans(self):
         print(self.__paword)
 
 user=Person('Tasin','abcd123','01893')
-user.get_attribute()
+user.ans()
 
 
 #if we make any method private,then it won't be accessible outside of the class 
@@ -39,11 +39,11 @@ class Person:
         self.identity=name
         self.__paword=password
         self.number=phone
-    def __get_attribute(self): #private_method
+    def __ans(self): #private_method
         print(self.__paword)
 
 user=Person('Tasin','abcd123','01893')
-user.__get_attribute()
+user.__ans()
 #Error:AttributeError: 'Person' object has no attribute '__get_attribute'
 
 
@@ -53,16 +53,36 @@ class Person:
         self.identity=name
         self.__paword=password
         self.number=phone
-    def ___get_attribute(self):
+    def ___ans(self):
         print(self.__paword)
     def public_attribute(self):
         print('This is public now')
-        self.___get_attribute()# Calling the private method from within the class
+        self.___ans()# Calling the private method from within the class
 
 user=Person('Tasin','abcd123','01893')
 user.public_attribute()
 
 
+
+
+class Person:
+    def __init__(self, name, pas, id):
+        self.name = name
+        self.__pas = pas  # Private attribute
+        self.id = id
+
+    # Private method
+    def __ans(self):
+        print(self.__pas)  # Access the private attribute
+
+    # Public method to access the private attribute
+    def public(self):
+        print(self.__pas)  # Correctly accessing private attribute
+        self.__ans()  # Calling the private method from within the class
+
+
+obj = Person("Tasin", 234, "toy")
+obj.public()  # Public method works
 
 
 
