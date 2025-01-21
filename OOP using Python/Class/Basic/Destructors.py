@@ -1,11 +1,14 @@
-
 #To know more:https://www.geeksforgeeks.org/destructors-in-python/
-
 '''
+The __del__() method is a known as a destructor method in Python. 
+It is called when all references to the object have been deleted i.e when an object is garbage collected. 
+
 Syntax of destructor declaration : 
  
 def __del__(self):
   # body of destructor
+
+Example 1 : Here is the simple example of destructor. By using del keyword we deleted the all references of object ‘obj’, therefore destructor invoked automatically.
 '''
 #ex:1
 class Employee:
@@ -32,21 +35,21 @@ class Employee:
 
 	# Initializing
 	def __init__(self):
-		print('Employee created')
+		print('Employee created')#3
 
 	# Calling destructor
 	def __del__(self):
-		print("Destructor called")
+		print("Destructor called")#6
 
 def Create_obj():
-	print('Making Object...')
+	print('Making Object...')#2
 	obj = Employee()
-	print('function end...')
+	print('function end...')#4
 	return obj
 
-print('Calling Create_obj() function...')
+print('Calling Create_obj() function...')#1
 obj = Create_obj()
-print('Program End...')
+print('Program End...')#5
 
 '''
 Output
