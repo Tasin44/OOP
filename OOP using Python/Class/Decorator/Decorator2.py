@@ -12,7 +12,9 @@ def get_factorial():
 
 timer(get_factorial)()
 
-
+# we can also do this part timer(get_factorial)() in detailed way
+# obj = timer(get_factorial)
+# obj()
 
 #approach2
 def timer(get_factorial):
@@ -28,3 +30,10 @@ def get_factorial():
     print('Factorial2')
 
 get_factorial()
+
+'''
+decorator(timer) takes the get_factorial function as an argument.
+It returns a new function (inner) that first prints a message, calls get_factorial() and then prints another message.
+The @timer syntax is a shorthand for get_factorial = decorator(get_factorial).
+'''
+
