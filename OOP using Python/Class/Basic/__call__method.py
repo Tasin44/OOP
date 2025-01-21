@@ -1,5 +1,6 @@
 
 #Example 1
+#The __call__ method permits you to create an object callable, rather than a function.
 '''
 Example 1: Basic Usage
 
