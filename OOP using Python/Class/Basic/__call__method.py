@@ -16,6 +16,29 @@ addition = CallableObject()
 result = addition(3,4)
 print(result)
 
+
+# to make an instance of a class callable using __call__
+
+#Here Without Assignment: args and kwargs are local variables scoped to the __call__ method.
+class MyCallableClass:
+    def __call__(self, *args, **kwargs):
+        print(f"Called with arguments: {args} and keyword arguments: {kwargs}")
+
+obj = MyCallableClass()
+obj(1, 2, 3, a=4, b=5)
+## Output: Called with arguments: (1, 2, 3) and keyword arguments: {'a': 4, 'b': 5}
+
+#With Assignment: By assigning args and kwargs to self.args and self.kwargs, you make them accessible as attributes of the object.
+class MyCallableClass:
+    def __call__(self, *args, **kwargs):
+        self.args = args  # Assign to self
+        self.kwargs = kwargs  # Assign to self
+        print(f"Called with arguments: {self.args} and keyword arguments: {self.kwargs}")
+
+obj = MyCallableClass()
+obj(1, 2, 3, a=4, b=5)
+
+
 #example 2
 class Calculation:
     def __init__(self,value):
