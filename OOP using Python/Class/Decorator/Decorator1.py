@@ -29,6 +29,7 @@ by assigning the result of wrapper_function(original_function) to wrapped_functi
 '''
 # Call the wrapped function
 wrapped_function()#step 5
+#It's a function, not a object of a class,so we can directly call it without any __call__ method
 
 '''
 print(wrapper_function(original_function)) 
