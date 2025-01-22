@@ -20,7 +20,7 @@ def num():
     return 10
 
 '''
-The num function is decorated with decor first and then with decor1.
+The num function first decorated with decor and then with decor1.
 This is equivalent to num = decor1(decor(num)).
 '''
 
@@ -29,15 +29,18 @@ This is equivalent to num = decor1(decor(num)).
 def num2():
     return 10
 '''
-The num2 function is decorated with decor1 first and then with decor.
+The num2 function first decorated with decor1 and then with decor.
 This is equivalent to num2 = decor(decor1(num2)).
 '''
+
 
 print(num()) 
 print(num2())
 
 
 '''
+Output wiht explanation:
+
 Decorating num:
 
 num = decor(num):
@@ -46,6 +49,7 @@ num = decor(num):
 num = decor1(decor(num)):
     The modified num now returns 20.
     decor1 modifies this to 20 * 20 = 400.
+
 
 Decorating num2:
 
@@ -56,4 +60,3 @@ num2 = decor(decor1(num2)):
     The modified num2 now returns 100.
     decor modifies this to 2 * 100 = 200.
 '''
-
