@@ -2,219 +2,118 @@
 #source:https://youtu.be/d2m07ENg-tA?feature=shared
 #also,read this blog:https://www.geeksforgeeks.org/getter-and-setter-in-python/
 
-#STEP:1
-class Person:
-    def __init__(self,first,last,address):
-        self.first=first
-        self.last=last
-        self.address=address
-        self.email=self.first+'.'+self.last+'@gmail.com'
 
-    def full_name(self):
-        return self.first+' '+self.last
+#Using normal function to achieve getters and setters behaviour
+#1st approach(single _private attribute )
+class Geek: 
+	def __init__(self, age = 0): 
+		self._age = age 
+	
+	# getter method 
+	def get_age(self): 
+		return self._age 
+	
+	# setter method 
+	def set_age(self, x): 
+		self._age = x 
 
-per=Person('Sam','Edison','BD')
+raj = Geek() 
 
-print(per.full_name())
-print(per.email)
+# setting the age using setter 
+raj.set_age(21) 
 
+# retrieving age using getter 
+print(raj.get_age()) #output 21
 
+print(raj._age) #output 21
 
-
-#STEP:2
-class Person:
-    def __init__(self,first,last,address):
-        self.first=first
-        self.last=last
-        self.address=address
-        self.email=self.first+'.'+self.last+'@gmail.com'
-
-    def full_name(self):
-        return self.first+' '+self.last
-
-per=Person('Sam','Edison','BD')
-
-print(per.full_name())
-print(per.email)
-per.first='Samuel'
-print(per.full_name())
-#full_name is a method,so if we change any variable of person class,
-# it'll show impact on the full_name 
-print(per.email)
-#but the email won't change because email still inside my init method,so no change will occur
-
-#So if we want to change the email too,
-
-
-#STEP:3
-class Person:
-    def __init__(self,first,last,address):
-        self.first=first
-        self.last=last
-        self.address=address
-
-    def full_name(self):
-        return self.first+' '+self.last
-
-    def email(self):
-        return self.first+self.last+'@gmail.com'
-
-per=Person('Sam','Edison','BD')
-
-print(per.full_name())
-print(per.email)
-per.first='Samuel'
-print(per.full_name())
-print(per.email())
-#now my email will change if I change any first or last name,
-#because now email is a method
-
-
-#STEP:4
-#using property decorator,it's also called 
-#Getter method
-
-class Person:
-    def __init__(self,first,last,address):
-        self.first=first
-        self.last=last
-        self.address=address
-    @property
-    def full_name(self):
-        return self.first+' '+self.last
-    @property
-    def email(self):
-        return self.first+self.last+'@gmail.com'
-
-per=Person('Sam','Edison','BD')
-
-print(per.full_name)
-print(per.email)
-per.first='Samueel'
-print(per.full_name)#even if it's a method,by using property decorator,we can use them as variable 
-print(per.email)##even if it's a method,by using property decorator,we can use them as variable 
 '''
-now full_name and email are method who are pass as argument to their own property decorator,
-from decorator they internally call the full_name & email method 
-& the value'll be returned below(full_name,email).
-If I do it without the property decorator method,it'll only print the reference 
+The attribute _age is not truly private. By convention, attributes starting with a single underscore (_) are considered 
+"protected" in Python, meaning they are intended for internal use but can still be accessed directly if needed.
+Therefore, accessing _age directly using raj._age works without any restriction.
 '''
 
+#2nd approach(double _private attribute )
 
-
-#STEP:5 setter method
-'''
-#first read this code & try to understand then go below
-class Person:
-    def __init__(self,first,last,address):
-        self.first=first
-        self.last=last
-        self.address=address
-    @property
-    def full_name(self):
-        return self.first+' '+self.last
-    @property
-    def email(self):
-        return self.first+self.last+'@gmail.com'
-
-per=Person('Sam','Edison','BD')
-
-print(per.full_name)
-print(per.email)
-per.full_name='tomas alva'#we can't do this change like this because full_name is a method,we can't
-                        #set value to method,we can set value to an attribute 
-print(per.full_name)
-print(per.email)
-'''
-'''
-if we try to change or initialize to a method,it won't happen directly,
-Sothat we need to use setter method 
-'''
-
-#so if we want to change fullname,we'll use setter method
-
-class Person:
-    def __init__(self,first,last,address):
-        self.first=first
-        self.last=last
-        self.address=address
-    @property
-    def fullname(self):
-        return self.first+' '+self.last
-
-    @fullname.setter
-    def fullname(self,name):
-        self.first,self.last=name.split()
-        #here self.first will be stored as tomas,
-        #self.last will be stored as alva 
+class Geek:
+    def __init__(self,age=0):
+        self.__age=age
     
-
-per=Person('Sam','Edison','BD')
-
-per.fullname='tomas alva'
-print(per.fullname)#if we don't use property before setter ,we can't call fullname as a variable 
-
-'''
-@fullname.setter to create the setter method.
-This allows fullname to be set directly, splitting the input string into first and last names.
-'''
-
-
-#STEP:6 DELETE
-'''
-class Person:
-    def __init__(self,first,last,address):
-        self.first=first
-        self.last=last
-        self.address=address
-    @property
-    def fullname(self):
-        return self.first+' '+self.last
-
-    @fullname.setter
-    def fullname(self,name):
-        self.first,self.last=name.split()
+    def get_age(self):
+        return self.__age
     
+    def set_age(self,x):
+        self.__age=x
 
-per=Person('Sam','Edison','BD')
+obj= Geek()
 
-per.fullname='tomas alva'
-print(per.fullname)
-del per.fullname
-#now we can't delete a method in this way,we can delete attribute like first,second this way
+obj.set_age(39)
 
-del per.first
-print(per.first)#it'll return 'Person' object has no attribute 'first',that means first deleted
+print(obj.get_age())
+
+print(obj.__age)
+
+
+'''
+The attribute __age is truly private because of name mangling in Python.
+
+Attributes starting with double underscores (__) are renamed internally by Python to prevent accidental access or overriding. 
+This is called name mangling.
+
+Internally, self.__age is renamed to _Geek__age to make it harder to access directly.
+
+Therefore, trying to access obj.__age directly raises an AttributeError, as Python does not find an attribute named __age.
+'''
+'''
+@property decorator
+
+The @property decorator works for both not truly private means protected (single _age) 
+and truly private means private (double __age) attributes. 
+This is because the @property decorator creates a layer of abstraction that allows controlled access to an attribute, 
+regardless of whether the attribute is "protected" (single _) or "private" (double __).
 '''
 
-#using deleter
-class Person:
-    def __init__(self,first,last,address):
-        self.first=first
-        self.last=last
-        self.address=address
+#previous code getter and setter method example with property decorator 
+class Geek:
+    def __init__(self,age=0):
+        self.__age=age
+    
+    # Getter using @property
     @property
-    def fullname(self):
-        return self.first+' '+self.last
+    def age(self):
+        print("getter method called")
+        return self.__age
 
-    @fullname.setter
-    def fullname(self,name):
-        self.first,self.last=name.split()
-    @fullname.deleter
-    def fullname(self):
-        self.first=None
-        self.last=None
-        print('Full name deleted...')
+    # Setter using @property_name.setter
+    @age.setter #@functionname.setter
+    def age(self,x):
+        if(x<18):
+            raise ValueError("Sorry you age is below eligibility criteria")
+        print("setter method called") 
+        self.__age=x
 
-per=Person('Sam','Edison','BD')
+# Create an object
+obj= Geek()
 
-per.fullname='tomas alva'
-print(per.fullname)
-del per.fullname
-print(per.first)
-print(per.last)
+# Modify private attribute like a regular variable
+obj.age=39 #instead of obj.set_age(39)
 
-
+print(obj.age)#instead of obj.get_age() and  __age
 
 
+'''
+Getter and Setter and property why used :Explanation
 
+Getter:
+    Used to access the value of a private attribute.
+    Defined as a method that returns the value of the attribute.
+
+Setter:
+    Used to modify the value of a private attribute.
+    Defined as a method that updates the value with some additional logic, if needed.
+
+Property Decorator (@property):
+    A Python feature to create getters and setters in a concise way.
+    Allows using an attribute-like syntax (obj.attribute) to interact with private variables, while still having full control through methods.
+
+'''
