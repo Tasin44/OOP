@@ -22,6 +22,8 @@ def original_function():
 
 # Wrap the original function with the wrapper function
 wrapped_function=wrapper_function(original_function)#step 1
+#will try to use orgianl function name here, it'll be benifacial for me difficult decorator function
+#original_function=wrapper_function(original_function)#step 1
 
 '''
 We wrap the original_function with the wrapper_function 
