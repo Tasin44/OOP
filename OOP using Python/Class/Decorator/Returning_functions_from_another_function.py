@@ -10,6 +10,13 @@ add_15=create_adder(15)
 
 # Call the function returned by create_adder(15) with argument 10 and print the result
 print(add_15(10))
+
+'''
+simply , when I call add_15=create_adder(15), 
+the add_15 contains the "return adder" function results, which is 15+y, 
+then when I call add_15(10) , it consider the value of y as 10 , 
+'''
+
 '''
 Defining the nested adder function:
 
