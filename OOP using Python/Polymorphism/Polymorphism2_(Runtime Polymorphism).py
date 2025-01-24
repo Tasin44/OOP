@@ -4,6 +4,9 @@ We create a for loop that iterates through a tuple of objects.
 Then call the methods without being concerned about which class type each object is.
 We assume that these methods actually exist in each class. 
 '''
+'''
+Runtime Polymorphism: Occurs when the behavior of a method is determined at runtime based on the type of the object.
+'''
 
 class India():
     def capital(self):
@@ -27,7 +30,7 @@ class USA():
 
 obj_ind = India()
 obj_usa = USA()
-for country in (obj_ind, obj_usa):
+for country in (obj_ind, obj_usa):  '''Runtime Polymorphism'''
     country.capital()
     country.language()
     country.type()
@@ -66,7 +69,7 @@ class Teacher(object):
 obj=Student()
 obj2=Teacher()
 
-for i in (obj,obj2):
+for i in (obj,obj2):  '''Runtime Polymorphism'''
     i.name()
     i.age()
     i.weight()
