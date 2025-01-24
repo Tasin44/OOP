@@ -45,3 +45,48 @@ Sparrows can fly.
 There are many types of birds.
 Ostriches cannot fly.
 '''
+
+
+
+
+
+
+'''Method overriding with hybrid inheritance'''
+
+class School:
+	def func(self):
+		print("This function is in school.")
+
+class Student1(School):#
+	def func(self):
+		print("This function is in student 1. ")
+
+class Student2(School):#
+	def func(self):
+		print("This function is in student 2.")
+
+class Student3(Student1, School):#Multiple inheritance 
+	def func(self):
+		print("This function is in student 3.")
+
+# Driver's code
+object = School()
+object1 = Student1()
+object2 = Student2()
+object3 = Student3()
+object.func()
+object1.func()
+object2.func()
+object3.func()
+
+'''
+Output:
+This function is in school.
+This function is in student 1. 
+This function is in student 2.
+This function is in student 3.
+'''
+
+
+
+
