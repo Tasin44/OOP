@@ -52,12 +52,15 @@ print(bird.move())   # Output: Flies in the sky
 Explanation
 Key Points
 
-Abstract Class: A class that contains one or more abstract methods and cannot be instantiated.
+(i) Abstract Class: A class that contains one or more abstract methods and cannot be instantiated.
 
-Abstract Method: A method declared in an abstract class that does not have an implementation. 
+(ii) Abstract Method: An abstract method is the one which cannot be called but can be overridden. 
+You need to decorate it with @abstractmethod decorator.
 Subclasses must override and implement these methods.
 
-The abc Module: Provides tools to define abstract base classes in Python.
+(iii) The abc Module: Provides tools to define abstract base classes in Python.
+
+ABC is the base class for defining abstract base classes, and abstractmethod is the decorator for marking methods as abstract.
 
 1.Importing ABC and abstractmethod:
 "from abc import ABC, abstractmethod" 
