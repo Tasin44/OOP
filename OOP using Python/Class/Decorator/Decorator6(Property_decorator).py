@@ -4,7 +4,7 @@
 
 
 #Using normal function to achieve getters and setters behaviour
-#1st approach(single _private attribute )
+#1st approach(single _protected attribute )
 class Geek: 
 	def __init__(self, age = 0): 
 		self._age = age 
@@ -33,7 +33,7 @@ The attribute _age is not truly private. By convention, attributes starting with
 Therefore, accessing _age directly using raj._age works without any restriction.
 '''
 
-#2nd approach(double _private attribute )
+#2nd approach(double __private attribute )
 
 class Geek:
     def __init__(self,age=0):
