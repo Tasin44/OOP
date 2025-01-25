@@ -1,6 +1,19 @@
-'''
-never use ',' in the return of str(example bottom)
 
+Never use ',' in the return of str(example bottom) if it's multi line return statement 
+but if it's a single line return statement, then we can use 
+
+ex1: we can use coma here 
+    def __str__(self):
+        return f"Department: {self.name}, Classes: {[cls.name for cls in self.classes]}, Professors: {[prof.name for prof in self.professors]}"
+      
+ex2:we can't use coma here
+    def __str__(self):
+        return (f"Department: {self.name} \n"
+        f"Classes: {[cls.name for cls in self.classes]}\n"
+        f"Professors: {[prof.name for prof in self.professors]}\n")
+
+
+'''        
 The __str__() function controls what should be returned when the class object is represented as a string.
 
 The __str__ method is a special method in Python that is called by the print function 
