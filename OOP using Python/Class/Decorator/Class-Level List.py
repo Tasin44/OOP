@@ -25,8 +25,8 @@ class Student:
         Student.all_students.append(self)  # Automatically add to class-level list
 
     @classmethod
-    def find_student(cls, student_id):
-        for student in cls.all_students:
+    def find_student(self, student_id):
+        for student in self.all_students:
             if student.student_id == student_id:
                 print(f"Found: {student.name} with ID {student.student_id}")
                 return
