@@ -1,4 +1,7 @@
-
+'''
+When it's a general information about the whole project or code, then we should use @staticmethod
+No need to use self (as a argument) on the @staticmethod, because it staticmethod, we don't use any instance here 
+'''
 class Geeks:
     course = 'DSA'
     list_of_instances = []
@@ -185,6 +188,11 @@ When we'll use staticmethod:
 if we want to something inside class but it's not related to anything to do with the class 
 information means no process is going to happen because of that,
 then we should use static method 
+
+
+When it's a general information about the whole project or code, then we should use @staticmethod
+No need to use self (as a argument) on the @staticmethod, because it staticmethod, we don't use any instance here 
+
 '''
 class Employee:
     cnt_employee=0
