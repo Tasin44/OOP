@@ -1,5 +1,6 @@
 
 #to know more: https://www.geeksforgeeks.org/constructors-in-python/
+# in Python (and most object-oriented languages), "instance" and "object" mean the same thing in practical use. They are often used interchangeably.
 
 class Person: 
     def __init__(self,name,age,company):
@@ -7,7 +8,7 @@ class Person:
         self.age=age
         self.company=company
     
-p1=Person("Tasin",25,"Enosis")#her Person is an instance,p1 is an object
+p1=Person("Tasin",25,"Enosis")#Person is the class,p1 is an object (an instance of the Person class)
 print(p1.age)
 print(p1.name)
 
