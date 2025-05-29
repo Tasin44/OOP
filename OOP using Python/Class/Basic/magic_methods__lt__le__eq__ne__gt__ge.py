@@ -1,3 +1,4 @@
+#See details in docs
 '''
 Why _lt, ___le__ this type of magic method is need? Can't i use if else inside the cls to do the same work?
     Enables comparison operations (<, <=) between objects.
