@@ -1,6 +1,7 @@
+#See details in docs
 class Person:
     def __init__(ref1,name,age):
-        ref1.name=name
+        ref1.name=name# assigns the value to the object's attribute
         ref1.age=age 
     def myfunc(ref2):
        print("This is :"+ref2.name)
