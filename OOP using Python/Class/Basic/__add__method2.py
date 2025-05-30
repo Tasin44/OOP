@@ -98,6 +98,46 @@ Step-by-step:
     result + obj3 → now becomes Person.__add__(obj3) → again returns a new Person.
 
 So this works recursively by always returning a new object of the same type (Person) — allowing further chaining.
+
+
+🔁 Explanation of this line" This calls the __init__ method again to initialize this new object."
+Is __init__ called again and again?
+
+✅ Yes — but only for the new object being created, not for obj2 or obj3.
+🔍 What exactly happens?
+
+Let’s say you write:
+
+result = obj1 + obj2 + obj3
+
+This is evaluated in steps:
+Step 1:
+
+temp = obj1 + obj2
+# Calls: obj1.__add__(obj2)
+# Inside __add__:
+#   total_age = 25 + 30
+#   total_weight = 90 + 60
+#   joint_name = "Alimkarim"
+# Returns: Person("Alimkarim", 55, 150) ➜ __init__ is called **once**
+
+Step 2:
+
+result = temp + obj3
+# Calls: temp.__add__(obj3)
+# Inside __add__:
+#   total_age = 55 + 20
+#   total_weight = 150 + 50
+#   joint_name = "AlimkarimZamal"
+# Returns: Person("AlimkarimZamal", 75, 200) ➜ __init__ is called **again**
+
+🧠 Important Note:
+
+    obj1, obj2, obj3 — already created, __init__ is not called again for them.
+
+    Only for the new result objects being created inside __add__, __init__ is called again to initialize those new objects.
+
+
 '''
 #===============================================================================================================
 
