@@ -1,4 +1,8 @@
 #See details in docs
+'''
+You must use self. to access object data inside each methods of the class. 
+__init__ stores data, while other methods retrieve it via self..
+'''
 class Person:
     def __init__(ref1,name,age):
         ref1.name=name# assigns the value to the object's attribute
