@@ -29,11 +29,16 @@ def timer(get_factorial):
 def get_factorial():
     print('Factorial2')
 
-get_factorial()
+get_factorial()#if I use @ decorator, then we've to call the original function
+
+'''
+You’re not directly calling the original get_factorial(), 
+but instead calling the decorated version (inner()), 
+which calls the original function as part of its body.
+'''
 
 '''
 decorator(timer) takes the get_factorial function as an argument.
 It returns a new function (inner) that first prints a message, calls get_factorial() and then prints another message.
 The @timer syntax is a shorthand for get_factorial = decorator(get_factorial).
 '''
-
