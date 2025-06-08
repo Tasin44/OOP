@@ -33,11 +33,14 @@ a, b = 1, 2
 #Call the decorated(wraped) sum_two_numbers function with a and b as arguments.
 print("Sum =", sum_two_numbers(a, b))
 
-# output
-# before Execution
-# after Execution
-# Inside the function
-#3
+
+
+Output:
+before Execution
+Inside the function
+after Execution
+Sum = 3
+======================================================================================================================================================
 
 '''
 approach -2
@@ -57,8 +60,6 @@ print(res)
 # before Execution
 # after Execution
 # Inside the function
-
-
 
 def hello_decorator(sum_two_numbers):
     def inner1(a, k):
@@ -118,17 +119,5 @@ def calculate_sum(a, b):
 print(calculate_sum(3, 5))  # Output: 42
 
 #Here, the decorator replace_with_constant ignores the original function and replaces it with a new function that always returns 42.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
