@@ -1,6 +1,30 @@
 '''
+✅ 1. Instance Methods
+✔️ When to use:
+
+    You want to access or modify data specific to an instance of the class.
+
+    These always take self as the first argument.
+'''
+
+def get_emp_details(self):
+    print('Name: ', self.fullname)
+    print('Salary: ', self.salary)
+
+'''
+🔑 Why use:
+
+    To get/set data that belongs to one specific employee (emp1, emp2).
+
+    Needs access to self, because instance data (like self.salary) is unique per object.
+'''
+
+
+========================================================================================================================================================
+classmethod and staticmethod
+'''
 When it's a general information about the whole project or code, then we should use @staticmethod
-No need to use self (as a argument) on the @staticmethod, because it staticmethod, we don't use any instance here 
+No need to use self (as a argument) on the @staticmethod, because in staticmethod, we don't use any instance here 
 '''
 class Geeks:
     course = 'DSA'
@@ -35,11 +59,7 @@ print(Geeks.welcome_message())
 
 
 
-
-
-
-
-
+========================================================================================================================================================
 
 
 #STEP:1
@@ -71,7 +91,17 @@ emp1.get_emp_details()
 emp2.get_emp_details()
 
 
+
+========================================================================================================================================================
+
 #STEP:2 class method
+
+'''
+it's always better to use classmethod to change or update the class variable,
+instead of instance method,
+if u want to update instance variable = use instance method
+if u want to update class variable = use classmethod
+'''
 
 class Employee:
     incriment=0.02 #class variable 
@@ -103,14 +133,10 @@ emp2.set_incri_salary()
 emp1.get_emp_details()
 emp2.get_emp_details()
 
-'''
-it's always better to use classmethod to change or update the class variable,
-instead of instance method,
-if u want to update instance variable = use instance method
-if u want to update class variable = use classmethod
-'''
 
 
+
+========================================================================================================================================================
 
 #STEP:3 use class method to create an alternative constructor
 #if we don't use classmethod 
@@ -174,26 +200,37 @@ emp2.get_emp_details()
 
 
 
+========================================================================================================================================================
 
 
-
-#STATIC METHOD
+STATIC METHOD
 
 '''
-Here we'll use staticmethod to print information,the
-staticmethod doesn't take any argument because it doesn't belong to class
-(it doesn't process anything to class),
-it's a kind of standalone function 
-When we'll use staticmethod:
-if we want to something inside class but it's not related to anything to do with the class 
-information means no process is going to happen because of that,
-then we should use static method 
+No implicit arguments:
+Unlike instance methods (which take self as the first argument) or class methods (which take cls), static methods do not receive any implicit first argument.
 
+Here we'll use staticmethod to print information,
+staticmethod associated with the class and can be called directly on the class itself without creating an instance.
+
+Cannot modify class or instance state:
+Static methods do not have access to instance-specific attributes or class-specific attributes
+
+
+When to use static methods:
+
+    When a function is logically related to a class but does not need to access any specific instance or class data.
+    For utility functions or helper methods that are relevant to the class but are independent of the object's state.
+    To group related functions within a class for better code organization.
+
+    if we want to something inside class but it's not related to anything to do with the class 
+    information means no process is going to happen because of that,
+    then we should use static method 
 
 When it's a general information about the whole project or code, then we should use @staticmethod
-No need to use self (as a argument) on the @staticmethod, because it staticmethod, we don't use any instance here 
-
+No need to use self (as a argument) on the @staticmethod, because in staticmethod, we don't use any instance here 
 '''
+
+
 class Employee:
     cnt_employee=0
     def __init__(self,f,l=None,add=None):
