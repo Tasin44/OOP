@@ -1,6 +1,6 @@
-
-#Question:find out the execution time of a function using a decorator.
-
+                                                '''
+                                                #Question:find out the execution time of a function using a decorator.
+                                                '''
 # importing libraries
 import time
 import math
@@ -8,7 +8,10 @@ import math
 # decorator to calculate duration taken by any function.
 #Decorator Definition:
 def calculate_time(factoria):
-    
+    '''
+    This function holds the timing logic,
+    we can apply this logic to any function with the help of Decorator
+    '''
     def inner1(*args, **kwargs):
 
         # storing time before function execution
@@ -34,34 +37,135 @@ def factorial(num):
 factorial(10)
 
 '''
-1.
-import time: The time module is used to measure the time taken by a function to execute.
-import math: The math module here is used to calculate the factorial of a number.
+✅ Step-by-step Execution
+1. Decorator Definition
 
-2.
-calculate_time function:This function takes another function func as an argument.
+def calculate_time(factoria):
 
-3.
-Define inner1 function:
-(i)inner1 accepts any number of positional (*args) and keyword arguments (**kwargs).
-(ii)begin = time.time() record the current time before the execution of the factorial function.
-(iii)func(*args, **kwargs) calls the original function func with the provided arguments.
-(iv)end = time.time() stores the current time after the execution of func.
-(v)print("Total time taken in : ", func.__name__, end - begin) calculates and 
-prints the total time taken by func to execute.
-(vi)func.__name__:
-In Python, func.__name__ is an attribute that gives the name of the function as a string. 
+    Step 1: A function named calculate_time is defined, which accepts another function (factoria) as an argument.
 
-4.Return inner1 from calculate_time:
-The inner1 function is returned, effectively wrapping the original function func.
+    Purpose: This is the decorator function that wraps another function with timing logic.
 
-5.Decorator Application:
-The @calculate_time decorator is applied to the factorial function.
-This is equivalent to writing factorial = calculate_time(factorial).
-The factorial function now has the additional behavior defined in inner1 
-(timing of the function execution).
+    def inner1(*args, **kwargs):
 
-6.When factorial(10) is called, it actually calls the inner1 function 
-defined inside the calculate_time decorator.
+    Step 2: Inside calculate_time, another function inner1 is defined. This will replace the original factorial function.
 
+    Purpose: inner1 will add extra functionality — in this case, timing.
+
+        begin = time.time()
+
+    Step 3: Start timer right before calling the actual function.
+
+        factoria(*args, **kwargs)
+
+    Step 4: Call the original function (factorial) passed to the decorator with any arguments.
+
+    Note: This is where the original logic (sleep + factorial calculation) happens.
+
+        end = time.time()
+
+    Step 5: End timer after function execution finishes.
+
+        print("Total time taken in : ", factoria.__name__, end - begin)
+
+    Step 6: Print the time taken for the function to run.
+
+    return inner1
+
+    Step 7: Return the inner1 function, which now includes timing logic.
+
+    Effect: factorial = calculate_time(factorial) implicitly because of the decorator syntax.
+
+🧠 Behind the Scenes: Decorator Application
+
+@calculate_time
+def factorial(num):
+
+    Step 8: The @calculate_time decorator is applied to the factorial function.
+
+    Effect: Python translates this as:
+
+factorial = calculate_time(factorial)
+
+Now factorial refers to inner1, not the original function.
+🔁 Function Call
+
+factorial(10)
+
+    Step 9: You're calling inner1(10) now.
+
+    Inside inner1:
+
+        Time starts
+
+        time.sleep(2) and math.factorial(10) run
+
+        Time ends
+
+        Duration is printed
+
+🧾 Final Output Example:
+
+3628800
+Total time taken in :  factorial 2.002134084701538
 '''
+
+===============================================================================================================================================
+'''
+
+If we want to do it without decorator:
+'''
+
+# importing libraries
+import time
+import math
+
+# decorator to calculate duration taken by any function.
+#Decorator Definition:
+def calculate_time(factorialf):
+  
+    '''
+    This function holds the timing logic,
+    we can apply this logic to any function with the help of Decorator
+    '''
+    
+    def inner1(*args, **kwargs):
+
+        # storing time before function execution
+        begin = time.time()
+        
+        factorialf(*args, **kwargs)
+
+        # storing time after function execution
+        end = time.time()
+        print("Total time taken in : ", factorialf.__name__, end - begin)
+
+    return inner1
+
+#Without Decorator Application:
+'''
+@calculate_time
+def factorial(num):
+
+# sleep 2 seconds because factorial calculation takes very less time so that you can see the actual difference
+    time.sleep(2)
+    print(math.factorial(num))
+
+# calling the function.
+factorial(10)
+'''
+
+def factorial(num):
+
+    begin = time.time()  # Manually measure time (timing start)
+    
+    time.sleep(2)
+    result = math.factorial(num)
+    print(result)
+     
+    end = time.time()   # Manually measure time (timing end )
+    print("Total time taken in: factorial", end - begin)
+print("Total time taken in : factorial", end - start)
+
+
+
