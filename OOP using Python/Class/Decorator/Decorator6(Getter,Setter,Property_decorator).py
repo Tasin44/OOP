@@ -33,7 +33,15 @@ The attribute _age is not truly private. By convention, attributes starting with
 Therefore, accessing _age directly using raj._age works without any restriction.
 '''
 
+
+
+====================================================================================================================================================================================================================================
 #2nd approach(double __private attribute )
+'''
+✅ Getter and Setter Methods
+These are special methods used to safely access and update private attributes.
+The correct and recommended way to access or modify private attribute is through getter and setter methods.
+'''
 
 class Geek:
     def __init__(self,age=0):
@@ -64,6 +72,18 @@ Internally, self.__age is renamed to _Geek__age to make it harder to access dire
 
 Therefore, trying to access obj.__age directly raises an AttributeError, as Python does not find an attribute named __age.
 '''
+
+'''
+🚫 Direct Access (Not Recommended)
+You can technically access private attributes using name mangling:
+
+		print(obj._Geek__age)
+
+This breaks encapsulation and should be avoided unless you're debugging or working in special cases.
+'''
+
+
+====================================================================================================================================================================================================================================
 '''
 @property decorator
 
