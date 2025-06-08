@@ -16,6 +16,9 @@ timer(get_factorial)()
 # obj = timer(get_factorial)
 # obj()
 
+
+
+=================================================================================================
 #approach2
 def timer(get_factorial):
     def inner():
