@@ -10,6 +10,9 @@ Private Method
 A private method is a method that is not meant to be called from outside the class.
 
 '''
+
+# Ex1: Private Attribute 
+
 class Person:
     def __init__(self,name,password,phone):
         self.identity=name
@@ -32,6 +35,13 @@ class Person:
 user=Person('Tasin','abcd123','01893')
 user.ans()
 
+
+
+
+==============================================================================================================================================================
+
+
+# Ex2: Private Method
 
 #if we make any method private,then it won't be accessible outside of the class 
 class Person:
@@ -64,6 +74,8 @@ user.public_attribute()
 
 
 
+==============================================================================================================================================================
+# Ex3: Private Attribute and Method
 
 class Person:
     def __init__(self, name, pas, id):
@@ -83,14 +95,6 @@ class Person:
 
 obj = Person("Tasin", 234, "toy")
 obj.public()  # Public method works
-
-
-
-
-
-
-
-
 
 
 
