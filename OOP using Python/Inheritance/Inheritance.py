@@ -51,7 +51,7 @@ class Emp(Person):
     def output(self):
         print("child class(which named Emp) is called")
     
-obj=Emp("Moon",20062)#if I make instance for Person class instead of Emp class,then error will be:
+obj=Emp("Moon",20062)#if I make instance for Person class instead of Emp class,then if I try to call child class(Emp) method (output()),then error will be:
 #'Person' object has no attribute 'output'
 print(obj.display())
 obj.output()
