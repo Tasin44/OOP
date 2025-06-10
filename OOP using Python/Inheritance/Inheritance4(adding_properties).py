@@ -13,7 +13,8 @@ class Person():
 # child class
 class Student(Person):
   def __init__(self, name, age, dob):
-    self.sName = name #here, attribute names must be different from parent class attribute name 
+    self.sName = name 
+    #here, attribute names must be different from parent class attribute name because here we want to initialize and display different name and age compare to parent class
     self.sAge = age
     self.dob = dob
     # inheriting the properties of parent class
@@ -28,9 +29,9 @@ obj.displayInfo()
 
 
 
-Output:
-Rahul 23
-Mayank 23 16-03-2000
+# Output:
+# Rahul 23
+# Mayank 23 16-03-2000
 
 
 
