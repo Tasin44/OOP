@@ -4,7 +4,7 @@
 #Subclassing (Calling constructor of parent class)
 
 #Single Inheritance: A child class inherits from one parent class.
-class Person(object):
+class Person(object):# ✅ Correct inheritance(object)
     def __init__(self,name,id):
         self.name=name
         self.id=id
@@ -31,6 +31,32 @@ class Employee(Person):
 obj=Employee("Tasin",62,62000,"intern")
 
 print(obj.display())
+
+'''
+1. What is object in class Student(object):?
+
+    In Python, object is the base class for all new-style classes.
+
+    Writing class Student(object): means Student inherits from Python's built-in object type.
+
+    It gives the class useful features like:
+
+        support for super()
+
+        better method resolution order (MRO)
+
+        descriptors and properties
+
+❗ Why not use something like obj?
+
+Because:
+
+    obj is not defined as a class—it’s just a name.
+
+    Python will raise a NameError if you write class Student(obj): and obj isn’t a valid class name.
+'''
+
+
 
 '''
 1.The display method in the Person class take references of self.salary and self.position.
