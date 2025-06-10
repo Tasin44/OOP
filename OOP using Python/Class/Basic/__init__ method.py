@@ -49,5 +49,16 @@ class MyClass:
 instance = MyClass()
 instance.some_method()  # Outputs: This is a method in MyClass
 
+'''
+We can define class in the below ways:
 
+1.class Person:       # ✅ Recommended
+    pass
+
+2.class Person():     # ✅ Also valid
+    pass
+
+3.class Person(object):  # ✅ Explicit inheritance from object (good in Python 2, optional in Python 3)
+    pass
+'''
 
