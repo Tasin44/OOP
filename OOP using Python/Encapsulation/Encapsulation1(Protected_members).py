@@ -164,10 +164,9 @@ In the above example:
 
 
 ========================================================================================================================================================================
-Super() examples :
 
 
-
+# Example 2 : Super()
 class Parent:
     def __init__(self):
         self.__private = "Private Attribute"
