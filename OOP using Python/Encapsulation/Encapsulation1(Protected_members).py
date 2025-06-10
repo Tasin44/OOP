@@ -11,10 +11,19 @@ Those types of variables are known as private variables.
 
 Protected Members:
 Protected members are those that are intended to be accessed only within the class 
-and its subclasses.In Python, protected members are defined by prefixing the member 
+and its subclasses.
+In Python, protected members are defined by prefixing the member 
 name with a single underscore (_).
 
 '''
+"""
+*************************
+If you want to access private attributes or private methods outside of their defining class (even in a child class), 
+you must use the name-mangled format, which is _ParentClassName__attribute or _ParentClassName__method().
+
+This is because Python uses name mangling to make private members "inaccessible" outside the defining class. 
+***********************
+"""
 #In Python,encapsulation is achieved using private and protected members.
 
 '''
@@ -33,6 +42,13 @@ class Subclass(Protected):
 obj = Subclass()#must be call the subclass always 
 obj.display_age() # This method within the subclass accesses the protected attribute and prints its value. 
 
+'''
+Why not I create _init_ on the subclass?
+Subclass doesn't define its own __init__, so it automatically uses the __init__ from the parent class (Protected).
+That means _age is still initialized properly.
+✅ You can access _age in the subclass because it's inherited.
+'''
+========================================================================================================================================================================
 
 
 #EXAMPLE-2(Protected Attribute access with the classname )
@@ -41,26 +57,42 @@ class Base(object):
         self._a=2
 class derived(Base):
     def __init__(self):
-       Base.__init__(self)
+       Base.__init__(self)#name mangling
        print("Calling protected member of base class: ",self._a)
        self._a+=3
        print("Calling protected member of child class: ",self._a)
 
 obj1=derived()
 
+'''
+Why  I create _init_ on the subclass?
+
+Here, derived class overrides the parent's __init__.
+Therefore, if you don’t call Base.__init__(self) explicitly, _a won't be initialized.
+So you must call the parent constructor to make sure _a exists before accessing it.
+
+🧠 Summary :
+Is it mandatory to use __init__ in the derived class to access protected attributes?
+
+    No, it's not mandatory if:
+
+        You don’t override the constructor in the subclass.
+
+        The parent class initializes the protected attribute in its own __init__.
+
+    Yes, it's necessary if:
+
+        You override __init__ in the subclass.
+
+        Then you must explicitly call the parent's __init__() to initialize protected attributes defined there.
+'''
 
 
-"""
-*************************
-If you want to access private attributes or private methods outside of their defining class (even in a child class), 
-you must use the name-mangled format, which is _ParentClassName__attribute or _ParentClassName__method().
+========================================================================================================================================================================
 
-This is because Python uses name mangling to make private members "inaccessible" outside the defining class. 
-***********************
-"""
+# Example -3 (Private Attribute) 
 
 class Base:
-
     def __init__(self):
         self.__privateattribute=5
 
@@ -80,19 +112,30 @@ obj=derived()
 
 
 
-#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+===========================================================================================================================================================================
+===========================================================================================================================================================================
+
+                                                                    super method:
+
+# ✅super() gives you a way to call methods (protected or public) or constructor (__init__) defined in the parent class(super class) in a child class.
+# ✅Main Use Case: super() lets you call a parent class’s methods or constructor (__init__) without explicitly naming the parent class.
+
+# ✅Private Members Limitation: It cannot directly access private attributes/methods(starting with double __) due to Python’s name-mangling. 
+# ✅Protected Attributes Limitation:super() is not used to directly access protected attributes like self._b.
+# You access those via methods (e.g., getter functions) if needed.
+
+# Key Takeaways:
+#     ✅Used for inheritance (calling parent class methods).
+#     ✅Avoids hardcoding the parent class name.
+#     ✅✅✅Works with protected/public methods, not works for private method or private/protected attributes.
+
+
 '''
-In Python, the super() function is used to refer to the parent class or superclass. 
-It allows you to call methods defined in the superclass(parent class) from the subclass(child class), 
-enabling you to extend and customize the functionality inherited from the parent class.
+Connection Between Encapsulation & super()
 
-Main: super() allows you to call a parent class's methods or constructor(__init__) from a child class without explicitly naming the parent class.
-
-super() is specifically designed to access protected members or methods (or public ones) of a parent class in a child class. 
-It cannot be used to directly access private members or methods, because private members are name-mangled in Python and not directly accessible through super().
-super() is also not applicable to access protected attribute
+    Encapsulation protects data inside a class.
+    super() accesses inherited methods while respecting encapsulation (cannot bypass private members).
 '''
-
 
 class BaseClass:
     def __init__(self):
@@ -120,7 +163,7 @@ In the above example:
 
 
 
-
+========================================================================================================================================================================
 Super() examples :
 
 
@@ -159,3 +202,6 @@ class Child(Parent):
 
 obj = Child()
 obj.show()
+
+
+
