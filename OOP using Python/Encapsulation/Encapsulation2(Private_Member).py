@@ -2,7 +2,7 @@
 Private Members
 Private members are those that should not be accessed directly outside the class. 
 In Python, private members are defined by prefixing the member name with two underscores (__).
-nor by any base class. In Python, there is no existence of Private instance 
+In Python, there is no existence of Private instance 
 variables that cannot be accessed except inside a class.
 '''
 class MyClass:
