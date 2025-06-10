@@ -195,12 +195,11 @@ class Child(Parent):
         # super().__private  # ❌ AttributeError
         # super().__private_method()  # ❌ AttributeError
 
-        # To access private members, use name mangling:
-        print("Private Attribute (via name mangling):", self._Parent__private)
-        self._Parent__private_method()
+        # To access private members, we should use name mangling,but it's not recommended because it breaks encapsulation:
+        print("Private Attribute (via name mangling):", self._Parent__private)#Accessing private attribute outside of the class
+        self._Parent__private_method()#Accessing private method outside of the class
 
 obj = Child()
 obj.show()
-
 
 
