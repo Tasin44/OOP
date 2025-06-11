@@ -60,5 +60,7 @@ We can define class in the below ways:
 
 3.class Person(object):  # ✅ Explicit inheritance from object (good in Python 2, optional in Python 3)
     pass
+
+In Python 3.x "class Person" is equivalent to "class Person(object)"
 '''
 
