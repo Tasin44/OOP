@@ -1,7 +1,11 @@
 '''
+🧠 What Is Method Overriding?
+-Method overriding means: This process of re-implementing a method in the child class is known as Method Overriding. 
+-In method overriding: A child class redefines a method from its parent class with the same name and signature.
+
+    
 Polymorphism In inheritance, the child class inherits the methods from the parent class. 
-However, it is possible to modify a method in a child class that it has inherited from the 
-parent class. 
+However, it is possible to modify a method in a child class that it has inherited from the parent class. 
 This is particularly useful in cases where the method inherited from 
 the parent class doesn’t quite fit the child class. 
 In such cases, we re-implement the method in the child class. 
