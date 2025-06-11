@@ -126,7 +126,8 @@ class Mother:
     
 class Son(Father, Mother):
     def __init__(self, fname, mname):
-        super().__init__(fname=fname, mname=mname)
+        super().__init__(fname=fname, mname=mname)#This is using keyword arguments, not positional ones.
+        #because of using **kwargs, if we change inheritance order (e.g., class Son(Mother, Father)), the argument order would break.
     def display_parent_info(self):
         print("Father name: ", self.fname)
         print("Mother name: ", self.mname)
@@ -140,7 +141,10 @@ print(Son.mro()) ## Output: [<class 'Son'>, <class 'Father'>, <class 'Mother'>, 
 
 '''
 ❓ why we use **kwargs in the __init__ methods of Father and Mother
-        
+
+✅ **kwargs is used when you're passing named keyword arguments like fname=fname, mname=mname.
+✅ *args is used for positional arguments like (fname, mname).
+
 The reason we use **kwargs in this case is to allow cooperative multiple inheritance, 
 where each parent class's __init__ can safely accept and forward extra arguments to the next class in the 
 Method Resolution Order (MRO).
@@ -207,4 +211,52 @@ Alternative Approach (Explicit Calls)
 
 This works but is less flexible (breaks if inheritance hierarchy changes).
 
+'''
+================================================================================================================================================
+
+# using *args 
+
+class Father:
+    def __init__(self, fname, *args):
+        self.fname = fname
+        super().__init__(*args)
+
+class Mother:
+    def __init__(self, mname, *args):
+        self.mname = mname
+        super().__init__(*args)
+
+class Son(Father, Mother):# if we change inheritance order (e.g., class Son(Mother, Father)), the argument order would break.
+    def __init__(self, fname, mname):
+        super().__init__(fname, mname)
+    def display_parent_info(self):
+        print("Father name: ", self.fname)
+        print("Mother name: ", self.mname)
+
+
+obj = Son("Nannu", "Taslima")
+obj.display_parent_info()
+
+
+'''
+Why This Fails
+
+    When Son.__init__ calls super().__init__(fname, mname), it passes them as positional args:
+
+        Father.__init__(self, "Nannu", "Taslima")
+
+        Father takes fname="Nannu" and forwards *args = ("Taslima",) to Mother.__init__.
+
+        Mother.__init__(self, "Taslima") takes mname="Taslima" and forwards nothing to object.__init__.
+
+    This works in this simple case, but it's fragile!
+
+        ✅If we later change inheritance order (e.g., class Son(Mother, Father)), the argument order would break,it'll then give output like 
+                Father name:  Taslima
+                Mother name:  Nannu
+                
+          But if we use **kwargs ,even if we change the order like class Son(Mother,Father): the output not changed. 
+          We've to call the class same way in both cases :
+              obj = Son("Nannu", "Taslima")
+       ✅ If a parent class adds a new required argument, all classes must adjust their *args handling.
 '''
