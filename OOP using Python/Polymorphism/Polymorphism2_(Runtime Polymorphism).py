@@ -30,10 +30,11 @@ class USA():
 
 obj_ind = India()
 obj_usa = USA()
-for country in (obj_ind, obj_usa):  '''Runtime Polymorphism'''
-    country.capital()
-    country.language()
-    country.type()
+for country in (obj_ind, obj_usa):  
+  '''Runtime Polymorphism'''
+  country.capital()
+  country.language()
+  country.type()
 
 '''
 Output
@@ -46,7 +47,7 @@ English is the primary language of USA.
 USA is a developed country.
 
 '''
-
+==============================================================================================================================================================================
 #Ex-2
 class Student(object):
     def name(self):
@@ -69,7 +70,86 @@ class Teacher(object):
 obj=Student()
 obj2=Teacher()
 
-for i in (obj,obj2):  '''Runtime Polymorphism'''
-    i.name()
-    i.age()
-    i.weight()
+for i in (obj,obj2):  
+  '''Runtime Polymorphism'''
+  i.name()
+  i.age()
+  i.weight()
+
+=======================================================================================================================================================================
+
+# Another Example : 
+
+class Bank1:
+    def __init__(self, name, rt, limit, number):
+        self.name = name
+        self.rt = rt
+        self.limit = limit
+        self.number = number
+
+    def show_name(self):
+        print("Name:", self.name)
+
+    def interest_rate(self):
+        print("Interest Rate:", self.rt)
+
+    def loan_limit(self):
+        print("Loan Limit:", self.limit)
+
+    def employee_size(self):
+        print("Employee Size:", self.number)
+
+
+class Bank2:
+    def __init__(self, name, rt, limit, number):
+        self.name = name
+        self.rt = rt
+        self.limit = limit
+        self.number = number
+
+    def show_name(self):
+        print("Name:", self.name)
+
+    def interest_rate(self):
+        print("Interest Rate:", self.rt)
+
+    def loan_limit(self):
+        print("Loan Limit:", self.limit)
+
+    def employee_size(self):
+        print("Employee Size:", self.number)
+
+
+# Polymorphism in action
+bn1 = Bank1("Dhaka Bank", 2.5, 40000, 500)
+bn2 = Bank2("Asia Bank", 3.5, 20000, 700)
+
+for bank in (bn1, bn2):  # Runtime polymorphism
+    bank.show_name()
+    bank.interest_rate()
+    bank.loan_limit()
+    bank.employee_size()
+    print("-----")
+
+
+
+# Output:
+
+# Name: Dhaka Bank
+# Interest Rate: 2.5
+# Loan Limit: 40000
+# Employee Size: 500
+# -----
+# Name: Asia Bank
+# Interest Rate: 3.5
+# Loan Limit: 20000
+# Employee Size: 700
+# -----
+
+
+
+
+
+
+
+    
