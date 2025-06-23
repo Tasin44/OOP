@@ -33,7 +33,19 @@ The attribute _age is not truly private. By convention, attributes starting with
 Therefore, accessing _age directly using raj._age works without any restriction.
 '''
 
+class Person:
+  def __init__(self,name="Roy"):
+    self._name=name
+  
+  def get_name(self):
+    return self._name
+  
+  def set_name(self,x):
+    self._name=x
 
+obj=Person()
+obj.set_name("Tasin")
+print(obj.get_name())
 
 ====================================================================================================================================================================================================================================
 #2nd approach(double __private attribute )
@@ -87,26 +99,26 @@ This breaks encapsulation and should be avoided unless you're debugging or worki
 '''
 @property decorator
 
-The @property decorator works for both not truly private means protected (single _age) 
-and truly private means private (double __age) attributes. 
+The @property decorator works for both protected (single _age) and private (double __age) attributes. 
 This is because the @property decorator creates a layer of abstraction that allows controlled access to an attribute, 
 regardless of whether the attribute is "protected" (single _) or "private" (double __).
 '''
 
 #previous code getter and setter method example with property decorator 
+#✅Remember,Python expects both the getter and setter to share the same name.
 class Geek:
     def __init__(self,age=0):
         self.__age=age
     
     # Getter using @property
     @property
-    def age(self):
+    def fage(self):
         print("getter method called")
         return self.__age
 
     # Setter using @property_name.setter
-    @age.setter #@functionname.setter
-    def age(self,x):
+    @fage.setter #@functionname.setter
+    def fage(self,x):#✅getter and setter must be same name
         if(x<18):
             raise ValueError("Sorry you age is below eligibility criteria")
         print("setter method called") 
@@ -116,8 +128,12 @@ class Geek:
 obj= Geek()
 
 # Modify private attribute like a regular variable
-obj.age=39 #instead of obj.set_age(39)
+#When you decorate a method with @property, you should access it like an attribute -fage=39, not like a function - fage(39)
+obj.fage=39 #instead of obj.set_age(39),Using property setter (no parentheses!)
 
+print(obj.fage)#instead of obj.get_age() and  __age#Using property getter
+
+# You can still access the private variable like this (not recommended though)
 print(obj.age)#instead of obj.get_age() and  __age
 
 
@@ -137,3 +153,20 @@ Property Decorator (@property):
     Allows using an attribute-like syntax (obj.attribute) to interact with private variables, while still having full control through methods.
 
 '''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
