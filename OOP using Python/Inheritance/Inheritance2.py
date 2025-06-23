@@ -33,11 +33,11 @@ obj=Employee("Tasin",62,62000,"intern")
 print(obj.display())
 
 '''
-1. What is object in class Student(object):?
+1. What is object in class Person(object):?
 
     In Python, object is the base class for all new-style classes.
 
-    Writing class Student(object): means Student inherits from Python's built-in object type.
+    Writing class Person(object): means Student inherits from Python's built-in object type.
 
     It gives the class useful features like:
 
@@ -83,7 +83,7 @@ the salary and position attributes specific to the Employee class are initialize
 
 Protected, Public, and Private Members:
 
-super() and Industry.__init__(...) can access public and protected members of the parent class without any issues.
+super() and Person.__init__(...) can access public and protected members of the parent class without any issues.
 For private members (those with names starting with __, like __salary), name mangling applies.
 
 
