@@ -4,6 +4,12 @@
 #Subclassing (Calling constructor of parent class)
 
 #Single Inheritance: A child class inherits from one parent class.
+'''
+The super() function is a built-in function that returns the ✅objects 
+that represent the parent class. 
+It allows to access the parent class’s methods and attributes in the child class.
+It enabling you to extend and customize the functionality inherited from the parent class.
+'''
 class Person(object):# ✅ Correct inheritance(object)
     def __init__(self,name,id):
         self.name=name
