@@ -89,7 +89,7 @@ the salary and position attributes specific to the Employee class are initialize
 
 Protected, Public, and Private Members:
 
-super() and Person.__init__(...) can access public and protected members of the parent class without any issues.
+super() and Childclassname.__init__(...) can access public and protected members of the parent class without any issues.
 For private members (those with names starting with __, like __salary), name mangling applies.
 
 
