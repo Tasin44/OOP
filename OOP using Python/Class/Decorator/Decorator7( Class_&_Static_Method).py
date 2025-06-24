@@ -296,6 +296,16 @@ When it's a general information about the whole project or code, then we should 
 No need to use self (as a argument) on the @staticmethod, because in staticmethod, we don't use any instance here 
 '''
 
+#Example 1:
+class Validator:
+    @staticmethod
+    def is_valid_email(email):
+        return "@" in email and "." in email
+
+# Usage
+print(Validator.is_valid_email("hello@example.com"))  # True
+print(Validator.is_valid_email("helloexamplecom"))    # False
+
 
 # Example 1:
 class MathUtils:
