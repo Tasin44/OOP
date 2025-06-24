@@ -244,15 +244,16 @@ emp2.get_emp_details()
 
 user = User("Tasin", 25)
 
-An alternative constructor is a class method that creates the object in a different way, like from a string, dictionary, or file.
+An alternative constructor is a special class method that creates an object in a different way than the regular __init__ method like from a string, dictionary, or file.
+It’s like having multiple doors to enter the same room.
     
 ✔️Why Is update_new_info is an Alternative Constructor?
 
     It provides a different way to create an Employee:
 
-        Normal: Employee('Sam', 'Ali', 'Canada')
+        By Normal constructor: Employee('Sam', 'Ali', 'Canada')
 
-        Alternative: Employee.update_new_info('Sam,Ali,Canada')
+        By Alternative constructor: Employee.update_new_info('Sam,Ali,Canada')
 
     Useful when input comes in a non-standard format (e.g., CSV strings, JSON).
 
