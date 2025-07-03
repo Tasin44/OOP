@@ -98,6 +98,9 @@ This breaks encapsulation and should be avoided unless you're debugging or worki
 ====================================================================================================================================================================================================================================
 '''
 @property decorator
+@property is a built-in Python decorator.
+
+It makes a method behave like an attribute, so you can access it without calling it as a method(without name mangling)
 
 The @property decorator works for both protected (single _age) and private (double __age) attributes. 
 This is because the @property decorator creates a layer of abstraction that allows controlled access to an attribute, 
@@ -153,20 +156,6 @@ Property Decorator (@property):
     Allows using an attribute-like syntax (obj.attribute) to interact with private variables, while still having full control through methods.
 
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
