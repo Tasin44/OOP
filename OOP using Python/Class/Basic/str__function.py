@@ -25,6 +25,9 @@ The __str__() method returns a human-readable, or informal, string representatio
 This method is called by the built-in print(), str(), and format() functions. 
 
 If you don’t define a __str__() method for a class, then the built-in object implementation calls the __repr__() method instead.
+
+__str__() does NOT run when the object is created.
+It runs only when Python needs a string representation of the object.
 '''
 #example-1
 class Person:
