@@ -1,3 +1,7 @@
+If data belongs to an object → NOT static
+If data belongs to the class as a whole → static
+
+static data holo cls level data, object level data na means kono specific object er data na
 '''
 ✅ 1. Instance Methods
 ✔️ When to use:
@@ -362,5 +366,6 @@ emp1.get_emp_details()
 emp2.get_emp_details()
 # Accessing static method
 Employee.number_of_employee()
+
 
 
