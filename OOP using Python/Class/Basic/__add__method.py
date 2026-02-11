@@ -61,30 +61,6 @@ Yes! You set them once in __init__, and they are now part of each object.
 But in other methods (like __add__), you must refer to them using self or other to access those saved values.
 You’re not redefining — you’re using what was set earlier.
 
-
-🔸🔸🔸  Best Practice
-
-Use self.attribute in all methods of the class to access object data.
-__init__ sets attributes by self.attribute, while other methods use them.
-
-
-🔸🔸🔸  Why Can’t We Skip self. in __add__?
-
-❌ Wrong Approach (Without self.):
-
-def __add__(self, other):
-    total_age = age + other.age  # ❌ ERROR: What is `age`? Not defined!
-
-
-    age alone is just a local variable (doesn’t exist in __add__).
-    self.age tells Python: "Use the age attribute of this object (obj1)."
-
-✅ Correct Approach (With self.):
-
-def __add__(self, other):
-    total_age = self.age + other.age  # ✅ Correct: Uses obj1.age + obj2.age
-
-
 '''
 #==================================================================================================================================
 
@@ -145,17 +121,4 @@ Try this:
 | `return {'age': a, 'w': b}` | Dictionary  |
 
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
 
