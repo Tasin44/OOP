@@ -1,4 +1,35 @@
 #See details in docs
+
+'''
+When to use self or not? 
+'''
+class Student:
+    def __init__(self, name):
+        self.name = name   # instance attribute
+
+    def greet(self, msg):
+        print(msg, self.name)
+        
+
+obj = Student("Tasin")
+obj.greet("Hello")
+
+'''
+এখানে কে কী?
+name → __init__ এর argument → object এ store হয়েছে → তাই self.name
+msg → greet() method এর argument → local → তাই শুধু msg
+
+যদি ভুল করে লিখো:
+print(self.msg)   # ❌ Error
+কারণ msg object এ store নাই।
+
+Super short rule:
+
+-Object এ save করা data → self.
+-Function এ আসা input → সরাসরি নাম
+'''
+#=======================================================================================================================================================
+
 '''
 You must use self. to access object data inside each methods of the class. 
 __init__ stores data, while other methods retrieve it via self..
@@ -48,4 +79,5 @@ def __add__(self, other):
 
 def __add__(self, other):
     total_age = self.age + other.age  # ✅ Correct: Uses obj1.age + obj2.age
+
 
