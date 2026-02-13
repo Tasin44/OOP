@@ -17,7 +17,6 @@ timer(get_factorial)()
 # obj()
 
 
-
 =================================================================================================
 #approach2
 def timer(get_factorial):
@@ -45,3 +44,41 @@ decorator(timer) takes the get_factorial function as an argument.
 It returns a new function (inner) that first prints a message, calls get_factorial() and then prints another message.
 The @timer syntax is a shorthand for get_factorial = decorator(get_factorial).
 '''
+
+
+=============================================================================================================
+
+def wrapper(func):
+    print("Before calling original")
+    func()
+    print("After calling original")
+    return func
+
+@wrapper
+def original():
+    print("This is the original")
+
+original()
+
+'''
+Output:
+
+
+Before calling original
+This is the original
+After calling original
+This is the original
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
