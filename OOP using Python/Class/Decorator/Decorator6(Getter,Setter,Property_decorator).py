@@ -5,6 +5,13 @@
 
 #Using normal function to achieve getters and setters behaviour
 #1st approach(single _protected attribute )
+
+One-line summary
+
+Constructor (__init__) sets initial value.
+Setter controls future changes + validation.
+
+
 class Geek: 
 	def __init__(self, age = 0): 
 		self._age = age 
@@ -93,6 +100,109 @@ You can technically access private attributes using name mangling:
 
 This breaks encapsulation and should be avoided unless you're debugging or working in special cases.
 '''
+====================================================================================================================================================================================================================================
+
+#🚨🚨❓❓I can directly pass age 23 and then I can retrive by get_age, then why I need to use set_age() for private attribute?
+
+class Student:
+    def __init__(self,age=0):
+        self.__age=age
+    def get_age(self):
+        return self.__age
+    
+obj=Student(23) #If I can already pass age in constructor, why do I need set_age()?
+print(obj.get_age()) 
+
+'''
+-In your example, yes — you can pass 23 directly and retrieve it with get_age(). That works fine.
+-But private attributes + setter methods are not about “can I set it?” — they are about control, validation, and safety.
+
+2️⃣ The problem without setter ❌
+
+Right now, nothing stops invalid data.
+
+Someone can do:
+'''
+		obj = Student(-50)
+		print(obj.get_age())
+
+Output → -50 ❌ (Invalid age)
+
+Or:
+
+		obj = Student("Hello")
+'''
+Now age becomes string 😐
+
+So your object state becomes corrupted.
+
+3️⃣ Setter adds validation ✅
+
+Setter lets you control how data is set.
+'''
+
+class Student:
+    def __init__(self,age=0):
+        self.__age=age#both is correct
+        # self.set_age(age)#both is correct
+    def get_age(self):
+        return self.__age
+    def set_age(self,x):
+        if x<0:
+            raise ValueError("age can't be below 0")
+        self.__age=x
+
+
+obj=Student()
+obj.set_age(-2)
+print(obj.get_age())
+'''
+Output: ValueError: age can't be below 0
+
+5️⃣ Encapsulation principle (core OOP reason)
+
+Private attribute = “Don’t touch directly”
+
+Setter = “Use controlled door” 🚪
+
+Think like ATM:
+
+Balance = private
+
+You can’t change balance directly
+
+You must deposit/withdraw through system
+
+Same idea.
+
+6️⃣ Real-world analogy 🧠
+
+Imagine hospital database (relevant to your backend projects):
+
+Patient age field:
+
+Without setter:
+
+Anyone can store -5
+
+Or "unknown"
+
+With setter:
+
+Only valid integer age allowed
+
+System integrity maintained
+
+7️⃣ When setter is NOT needed
+
+If attribute:
+
+Never changes after creation
+
+Doesn’t need validation
+
+Then constructor alone is fine ✅
+'''
 
 
 ====================================================================================================================================================================================================================================
@@ -156,6 +266,7 @@ Property Decorator (@property):
     Allows using an attribute-like syntax (obj.attribute) to interact with private variables, while still having full control through methods.
 
 '''
+
 
 
 
