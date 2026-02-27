@@ -54,6 +54,25 @@ obj=Person()
 obj.set_name("Tasin")
 print(obj.get_name())
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+class Person:
+  def __init__(self,name="kamal",age=24):
+    self._nam=name 
+    self._age=age 
+  def get_name(self):
+    return self._nam
+  def get_age(self):
+      return self._age
+  def set_nameage(self,x,y):
+    self._nam=x
+    if y!=0 and y>0:#adding validation
+        self._age=y
+
+ob=Person()
+ob.set_nameage("roy",-6)
+print(ob.get_name())
+print(ob.get_age())
+
 ====================================================================================================================================================================================================================================
 #2nd approach(double __private attribute )
 '''
@@ -78,7 +97,7 @@ obj.set_age(39)
 
 print(obj.get_age())
 
-print(obj.__age)
+print(obj.__age) #AttributeError: 'Geek' object has no attribute '__age'
 
 
 '''
@@ -266,7 +285,3 @@ Property Decorator (@property):
     Allows using an attribute-like syntax (obj.attribute) to interact with private variables, while still having full control through methods.
 
 '''
-
-
-
-
