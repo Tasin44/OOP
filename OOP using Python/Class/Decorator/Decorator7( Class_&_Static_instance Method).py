@@ -2,6 +2,103 @@ If data belongs to an object → NOT static
 If data belongs to the class as a whole → static
 
 static data holo cls level data, object level data na means kono specific object er data na
+#==================================================================================================================================================================================
+                                                                                                            '''
+                                                                                        Final Exmaple of class,instance and static method 
+                                                                                                            '''
+# Here’s a very simple, real-life example using a BankAccount class so you clearly understand:
+# ✅ Instance Method
+# ✅ Class Method
+# ✅ Static Method
+
+🎯 Easy Way to Remember
+-If it needs object data → Instance method
+-If it needs class-level data → Class method
+-If it needs no class or object data → Static method
+
+code : 
+
+class BankAccount:
+    # 👉 Class variable (shared by all accounts)
+    bank_name = "ABC Bank"
+    total_accounts = 0
+
+    # 👉 Constructor (runs when object is created)
+    def __init__(self, owner, balance):
+        self.owner = owner          # Instance variable (belongs to object)
+        self.balance = balance      # Instance variable
+        BankAccount.total_accounts += 1  # Increase total accounts
+
+    # ===============================
+    # 1️⃣ Instance Method
+    # ===============================
+    def deposit(self, amount):
+        """
+        Instance method:
+        - Works with object data (self)
+        - Can access instance variables
+        """
+        self.balance += amount
+        return f"{self.owner} new balance: {self.balance}"
+
+    # ===============================
+    # 2️⃣ Class Method
+    # ===============================
+    @classmethod
+    def get_total_accounts(cls):
+        """
+        Class method:
+        - Works with class data (cls)
+        - Cannot access instance variables directly
+        """
+        return f"Total accounts in {cls.bank_name}: {cls.total_accounts}"
+
+    # ===============================
+    # 3️⃣ Static Method
+    # ===============================
+    @staticmethod
+    def is_valid_amount(amount):
+        """
+        Static method:
+        - Independent method
+        - Does NOT use self or cls
+        - Just utility/helper logic
+        """
+        return amount > 0
+
+
+# ===============================
+# 🔹 Using the class
+# ===============================
+
+# Creating objects
+acc1 = BankAccount("Tasin", 1000)
+acc2 = BankAccount("Rahim", 500)
+
+# ✅ Instance method (called using object)
+print(acc1.deposit(200))  
+# Output: Tasin new balance: 1200
+
+# ✅ Class method (called using class)
+print(BankAccount.get_total_accounts())  
+# Output: Total accounts in ABC Bank: 2
+
+# ✅ Static method (utility check)
+print(BankAccount.is_valid_amount(100))  
+# Output: True
+
+
+| Type            | Uses                   | Access              |
+| --------------- | ---------------------- | ------------------- |
+| Instance Method | Works with object data | `self`              |
+| Class Method    | Works with class data  | `cls`               |
+| Static Method   | Just helper function   | No `self`, no `cls` |
+
+
+
+
+
+#=======================================================================================================================================================================================
 '''
 ✅ 1. Instance Methods
 ✔️ When to use:
@@ -367,5 +464,4 @@ emp2.get_emp_details()
 # Accessing static method
 Employee.number_of_employee()
 
-
-
+=================================================================================================================================================================================================\
