@@ -12,6 +12,32 @@ resolution order (MRO) is followed,and all necessary initializations are perform
 
 The super function should be called as a function like super()., not as a class attribute like super.
 '''
+'''
+in django 
+Why super().save(*args, **kwargs)?
+
+It calls the parent class's save method to actually save the object to the database after your custom logic.
+What are *args and **kwargs?
+
+They capture and pass through any arguments the save method receives:
+
+    *args = positional arguments (like force_insert, using)
+
+    **kwargs = keyword arguments (like force_insert=True, using='default')
+
+Example:
+# When Django calls save with arguments:
+article.save(force_insert=True, using='default')
+
+# Without *args, **kwargs:
+def save(self):
+    super().save()  # ❌ Loses force_insert and using arguments
+
+# With *args, **kwargs:
+def save(self, *args, **kwargs):
+    super().save(*args, **kwargs)  # ✅ Preserves all original arguments
+'''
+
 
 class Person(object):
     def __init__(self,name,id):
