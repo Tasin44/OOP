@@ -71,3 +71,83 @@ Order of Initialization:
 1.The parent class attributes (name and id) are initialized first.
 2.The child class specific attributes (salary and position) are initialized afterward.
 '''
+#=====================================================================================================================================================
+#=====================================================================================================================================================
+'''
+Task: Build an Inventory class that stores items (dict of name → {price, qty}). Support adding items via **kwargs, a callable interface to quickly look up total value, 
+and a DiscountInventory subclass that applies a discount using super().
+'''
+
+class Inventory:
+    def __init__(self, **initial_items):
+        # initial_items: name=(price, qty) pairs passed as kwargs
+        self.items = {}
+       '''
+       The first line initializes an empty dictionary. The loop then populates it with any items passed during object creation. This allows you to create an inventory with initial items like:
+       '''
+       
+        for name, (price, qty) in initial_items.items():
+            self.items[name] = {"price": price, "qty": qty}
+
+    def add_items(self, *args):
+        # args: tuples of (name, price, qty)
+        for name, price, qty in args:
+            if name in self.items:
+                self.items[name]["qty"] += qty
+            else:
+                self.items[name] = {"price": price, "qty": qty}
+
+    def remove_item(self, name):
+        try:
+            del self.items[name]
+        except KeyError:
+            print(f"Item '{name}' not found.")
+
+    def total_value(self):
+        return sum(v["price"] * v["qty"] for v in self.items.values())
+
+    def __call__(self):
+        # calling the object directly gives a quick summary
+        return {name: v["qty"] for name, v in self.items.items()}
+
+
+class DiscountInventory(Inventory):
+    def __init__(self, discount_pct, **initial_items):
+        super().__init__(**initial_items)
+        self.discount_pct = discount_pct
+
+    def total_value(self):
+        original_total = super().total_value()
+        return original_total * (1 - self.discount_pct / 100)
+
+
+inv = DiscountInventory(discount_pct=10, apple=(2.0, 10), banana=(1.0, 20))
+inv.add_items(("cherry", 5.0, 4), ("apple", 2.0, 5))  # adds cherry, adds qty to apple
+inv.remove_item("kiwi")  # triggers except branch
+print(inv.total_value())     # discounted total
+print(inv())                 # uses __call__ -> {'apple': 15, 'banana': 20, 'cherry': 4}
+
+
+
+'''
+Here, at first I'm calling discount() class, in the discount class it's using parent class inventory init method, at first it initialize the product as initial items, then discount_pct, right?
+
+So yes, the order is exactly:
+
+Discount.__init__()
+        │
+        ▼
+Inventory.__init__()
+        │
+        ▼
+Create self.items
+Store apple
+Store banana
+        │
+        ▼
+Return to Discount.__init__()
+        │
+        ▼
+self.discount_pct = 10
+'''
+
