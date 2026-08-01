@@ -1,10 +1,39 @@
 
 '''
+A decorator in Python is a special function that modifies or adds extra behavior to another function or method without changing its original code.
+
+
 A decorator is a function that takes another function 
 as an argument and returns a new function, 
 usually adding some functionality to the original 
 function without modifying its code directly.
+'''
 
+# Syntax:
+@decorator_name
+def my_function():
+    pass
+
+
+# It is equivalent to:
+def my_function():
+    pass
+
+my_function = decorator_name(my_function)
+
+
+'''
+In Python OOP
+
+Decorators are commonly used to change how methods behave.
+
+@classmethod → receives the class (cls) instead of an object (self).
+@staticmethod → behaves like a normal function inside the class; it receives neither self nor cls.
+@property → lets you access a method like an attribute.
+'''
+
+
+'''
 in this code, 
 wrapper_function serves as a decorator that decorates
 original_function by adding extra functionality to it.
