@@ -1,21 +1,16 @@
 
 '''
 Why Use a Class-Level List?
-
-    Centralized Storage:
+    -Centralized Storage:
         All instances of the class can share and contribute to a common list.
         Useful for tracking or searching through all objects of the class without relying on external data structures.
-
-    Easier Management:
+    -Easier Management:
         You can easily add, remove, or search for instances without needing to keep track of each one manually.
-
-    Shared Across Instances:
+    -Shared Across Instances:
         The list is not specific to one instance. All objects of the class have access to it.
 '''
 
-          
 '''with class-level list'''
-
 # Example -1 
 
 class Student:
@@ -66,9 +61,7 @@ By appending self, you're saving the full object with all its attributes (name, 
 ✅ By storing the whole object (self), you can:
 
     Access student.name
-
     Access student.student_id
-
     Extend later with more attributes (like age, grade, etc.)
 
 Bonus: When you're iterating in find_student():
@@ -78,9 +71,146 @@ for student in self.all_students:
 
 This only works because student here is a full object, not just an ID or name. That’s why .student_id works!
 '''
+# =================================================================================================================================================================================
+
+##what will happend if I dont' use class method here 
+class Company:
+    all_employee=[]
+
+    def __init__(self,name,id):
+      self.name=name
+      self.id=id 
+      self.all_employee.append(self)
+
+    def find_comp(self,id):
+        for i in self.all_employee:
+            if i.id == id: 
+                print(f"found with the id {id}")
+        return
+
+obj1=Company("RK",102)
+
+Company.find_comp(102)
+
+
+❌❌Error
+Traceback (most recent call last):
+  File "C:\Users\tasin44\OneDrive\Desktop\Libraries\my1.py", line 52, in <module>
+    Company.find_comp(102)
+    ~~~~~~~~~~~~~~~~~^^^^^
+TypeError: Company.find_comp() missing 1 required positional argument: 'id'
+
+##------------Why:----------------------
+Now you call
+    Company.find_comp(102)
+
+Python sees this method definition:
+
+    def find_comp(self, id):
+
+It expects 2 arguments.
+
+    self
+    id
+
+But you only gave one:
+
+    Company.find_comp(102)
+
+Python assigns
+
+    self = 102
+
+Now it still needs
+
+    id = ?
+
+Since nothing was supplied, Python raises
+
+    TypeError: Company.find_comp() missing 1 required positional argument: 'id'
+
+It is equivalent to writing
+
+    Company.find_comp(self=102)
+
+and forgetting id.
 
 
 
+##--------With @classmethod----------------
+
+Now your code becomes
+
+    @classmethod
+    def find_comp(self, id):
+
+
+When you do
+
+    Company.find_comp(102)
+
+Python automatically converts it into
+
+    Company.find_comp(Company, 102)
+
+So
+
+    self = Company
+    id = 102
+
+Now self.all_employee works because self refers to the class itself.
+
+
+
+##-----------Visual comparison between instance method and class method:--------------------------
+
+Instance Method
+    def find_comp(self, id):
+
+Call:
+
+    obj1.find_comp(102)
+
+Python actually does
+
+    Company.find_comp(obj1, 102)
+
+    self -> obj1
+    id   -> 102
+
+Class Method
+    @classmethod
+    def find_comp(cls, id):
+
+Call:
+
+    Company.find_comp(102)
+
+Python actually does
+
+    Company.find_comp(Company, 102)
+    cls -> Company
+    id  -> 102
+
+#------------Without @classmethod
+    def find_comp(self, id):
+
+Call:
+
+    Company.find_comp(102)
+
+Python actually does
+
+Company.find_comp(102)
+
+which binds
+
+self -> 102
+id   -> MISSING ❌
+
+So you get
+
+TypeError: Company.find_comp() missing 1 required positional argument: 'id'
 # =================================================================================================================================================================================
 
 # Example -2 
