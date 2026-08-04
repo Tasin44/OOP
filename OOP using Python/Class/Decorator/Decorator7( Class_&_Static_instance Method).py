@@ -2,6 +2,46 @@ If data belongs to an object → NOT static
 If data belongs to the class as a whole → static
 
 static data holo cls level data, object level data na means kono specific object er data na
+#=================================================================================================================================================================================
+# Static variable and static method:
+                                                                                  Static Variable (Class Variable)
+
+# A variable that is shared by all objects of the class. It belongs to the class, not to individual objects.
+
+class Hospital:
+    hospital_name = "Dhaka MC"   # Static/Class variable
+
+h1 = Hospital()
+h2 = Hospital()
+
+print(h1.hospital_name)  # Dhaka MC
+print(h2.hospital_name)  # Dhaka MC
+
+# If you change it through the class:
+
+Hospital.hospital_name = "City Hospital"
+
+print(h1.hospital_name)  # City Hospital
+print(h2.hospital_name)  # City Hospital
+
+                                                                                    Static Method
+
+# A method that doesn't need self or cls. It's used for utility/helper functions related to the class.
+
+class Hospital:
+
+    @staticmethod
+    def is_valid_id(pt_id):
+        return pt_id > 0
+
+print(Hospital.is_valid_id(10))   # True
+print(Hospital.is_valid_id(-5))   # False
+
+# Easy way to remember
+# Static/Class Variable → Shared data for all objects.
+# Static Method → Shared helper function that doesn't access object (self) or class (cls) data.
+
+
 #==================================================================================================================================================================================
                                                                                                             '''
                                                                                         Final Exmaple of class,instance and static method 
